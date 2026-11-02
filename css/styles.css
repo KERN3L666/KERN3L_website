@@ -89,12 +89,12 @@ input:checked + .slider:before {
 
 h1 {
     position:absolute;
-    left: 75vh;
+    left: 90vh;
 }
 
  .welcome-message{
     position:absolute;
     left: 5vh;
-    top: 20vh;
+    top: 25vh;
 }
 
