@@ -1,3 +1,9 @@
+:root {
+    --font-color: #0f0f0f;
+    --bg-color: #fefefe;
+    --font:'poppins', sans-serif;
+}
+
 html {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -10,18 +16,15 @@ html {
     -webkit-overflow-scrolling: touch;
     background: none;
     background-color: var(--bg-color);
+    color: var(--font-color); /* <-- Add this line */
     top: 150px;
 }
 
- :root {
-
-    --font-color: #0f0f0f;
-    --bg-color: #fefefe;
-
+body {
+    font-family: var(--font);
 }
 
 [data-theme="dark"] {
-
     --font-color: #fefefe;
     --bg-color: #121212;
 }
@@ -94,3 +97,4 @@ h1 {
     left: 5vh;
     top: 20vh;
 }
+
