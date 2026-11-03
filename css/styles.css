@@ -98,3 +98,12 @@ h1 {
     top: 25vh;
 }
 
+.showcase_link {
+    position:absolute;
+    left: 5vh;
+    top: 35vh;
+}
+link::hover {
+    color: var(--font-color);
+    text-decoration: underline;
+}
