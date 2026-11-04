@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Dark Mode Switch with localStorage persistence
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
 
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSwitch.addEventListener('change', switchTheme, false);
     }
 
-    // 2. GSAP Immersive Fullscreen Nav Animation
     const toggleBtn = document.getElementById("nav-toggle");
     const overlay = document.getElementById("nav-overlay");
     const navItems = document.querySelectorAll(".nav-item");
@@ -34,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let isMenuOpen = false;
 
-    // Create GSAP Timeline for opening animation
     const navTimeline = gsap.timeline({ paused: true });
 
     navTimeline
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power3.out"
         }, "-=0.4");
 
-    // Toggle menu state
     toggleBtn.addEventListener("click", () => {
         if (!isMenuOpen) {
             document.body.classList.add("menu-open");
