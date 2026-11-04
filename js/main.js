@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
         isMenuOpen = !isMenuOpen;
     });
 
-    // 3. Lenis Smooth Scroll Initialization
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis();
         function raf(time) {
