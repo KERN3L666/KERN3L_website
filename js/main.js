@@ -1,23 +1,91 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Dark Mode Switch with localStorage persistence
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
 
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
     }
-}
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else { 
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
     }
-    else {        document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-    }    
-}
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+    if (toggleSwitch) {
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    }
+
+    // 2. GSAP Immersive Fullscreen Nav Animation
+    const toggleBtn = document.getElementById("nav-toggle");
+    const overlay = document.getElementById("nav-overlay");
+    const navItems = document.querySelectorAll(".nav-item");
+    const navInfo = document.querySelector(".nav-info");
+    const navImages = document.querySelectorAll(".img-box");
+
+    let isMenuOpen = false;
+
+    // Create GSAP Timeline for opening animation
+    const navTimeline = gsap.timeline({ paused: true });
+
+    navTimeline
+        .to(overlay, {
+            duration: 0.75,
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            ease: "power4.inOut"
+        })
+        .from(navInfo, {
+            y: 30,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power3.out"
+        }, "-=0.25")
+        .from(navItems, {
+            y: 40,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power3.out"
+        }, "-=0.4")
+        .from(navImages, {
+            scale: 0.9,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power3.out"
+        }, "-=0.4");
+
+    // Toggle menu state
+    toggleBtn.addEventListener("click", () => {
+        if (!isMenuOpen) {
+            document.body.classList.add("menu-open");
+            overlay.classList.add("active");
+            navTimeline.play();
+        } else {
+            document.body.classList.remove("menu-open");
+            navTimeline.reverse().then(() => {
+                overlay.classList.remove("active");
+            });
+        }
+        isMenuOpen = !isMenuOpen;
+    });
+
+    // 3. Lenis Smooth Scroll Initialization
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+});

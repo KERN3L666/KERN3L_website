@@ -12,15 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="main-title">KERN3L  developper</h1>
 
-    <p class="welcome-message">Welcome to my showcase of what I'm able to do with js css and html </p>
-    <p class="showcase">click here to see my work</p>
-    
-    <li class="showcase_link">
-        <a href="#">View My Work</a>
-    </li>
+    <!-- Fixed Header & Menu Trigger -->
+    <header class="header">
+        <a href="#" class="brand-logo">KERN3L.SYS</a>
+        <button id="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="menu-text">Menu</span>
+            <span class="close-text">Close</span>
+        </button>
+    </header>
 
+    <!-- Theme Switcher -->
     <div class="switch">
         <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
@@ -28,20 +30,63 @@
         </label>
     </div>
 
+    <!-- Main Hero Content -->
+    <main class="hero-content">
+        <p class="subtitle">Navigation</p>
+        <h1 class="main-title">KERN3L.SYS developper</h1>
+        <p class="welcome-message">Welcome to my showcase of what I'm able to do with JS, CSS, and HTML.</p>
+        <div class="showcase_link">
+            <a href="#">View My Work</a>
+        </div>
+    </main>
 
-  
+    <!-- Immersive Fullscreen Navigation Overlay -->
+    <div id="nav-overlay" class="nav-overlay">
+        <div class="nav-container">
+            <!-- Left Info Column -->
+            <div class="nav-info">
+                <div class="nav-agency-block">
+                    <h2>Northline Studio</h2>
+                    <p class="nav-tagline">Brand and product design for early-stage teams.</p>
+                    <p class="nav-location">Lisbon, Portugal</p>
+                </div>
+                
+                <div class="nav-socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
 
+            <!-- Middle Navigation Links -->
+            <nav class="nav-links-wrapper">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#">Work</a></li>
+                    <li class="nav-item"><a href="#">Studio</a></li>
+                    <li class="nav-item"><a href="#">Journal</a></li>
+                    <li class="nav-item"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Right Showcase Images -->
+            <div class="nav-images">
+                <div class="img-box">
+                    <img src="https://cdn.21st.dev/assets/mirror/ba/baa678cbac1a29e773743a10ff421b226cf0e9b5d786ebf34415063d6dabc02b.jpg" alt="Showcase 1">
+                </div>
+                <div class="img-box">
+                    <img src="https://cdn.21st.dev/assets/mirror/ef/ef696854debc5d2d40cbe03ea0c3a04e29689529cf2f4bfe90c1c5978f00579a.jpg" alt="Showcase 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
-    <!-- ScrollSmoother requires ScrollTrigger -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/TextPlugin.min.js"></script>
-
-    <!--lenis smooth scroll -->
     <script src="https://unpkg.com/lenis@1.3.27/dist/lenis.min.js"></script> 
     <script src="js/main.js"></script>
-
-    
 </body>
 </html>
