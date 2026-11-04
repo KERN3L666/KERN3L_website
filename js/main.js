@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Theme Switcher
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
 
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
-      
+        
         if (currentTheme === 'dark') {
             toggleSwitch.checked = true;
         }
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSwitch.addEventListener('change', switchTheme, false);
     }
 
+    // 2. GSAP Navigation Menu
     const toggleBtn = document.getElementById("nav-toggle");
     const overlay = document.getElementById("nav-overlay");
     const navItems = document.querySelectorAll(".nav-item");
@@ -61,20 +63,23 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power3.out"
         }, "-=0.4");
 
-    toggleBtn.addEventListener("click", () => {
-        if (!isMenuOpen) {
-            document.body.classList.add("menu-open");
-            overlay.classList.add("active");
-            navTimeline.play();
-        } else {
-            document.body.classList.remove("menu-open");
-            navTimeline.reverse().then(() => {
-                overlay.classList.remove("active");
-            });
-        }
-        isMenuOpen = !isMenuOpen;
-    });
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+            if (!isMenuOpen) {
+                document.body.classList.add("menu-open");
+                overlay.classList.add("active");
+                navTimeline.play();
+            } else {
+                document.body.classList.remove("menu-open");
+                navTimeline.reverse().then(() => {
+                    overlay.classList.remove("active");
+                });
+            }
+            isMenuOpen = !isMenuOpen;
+        });
+    }
 
+    // 3. Lenis Smooth Scroll
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis();
         function raf(time) {
@@ -83,4 +88,41 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         requestAnimationFrame(raf);
     }
+
+    // 4. Rainbow Wave Title Effect Integration
+    function applyRainbowWave(elementId, options = {}) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        const text = element.innerText;
+        const speed = options.speed || 0.004;
+        const frequency = options.frequency || 0.25;
+        const saturation = options.saturation || 100;
+        const lightness = options.lightness || 50;
+
+        // Split text into individual character spans
+        element.innerHTML = text
+            .split('')
+            .map(char => `<span>${char === ' ' ? '&nbsp;' : char}</span>`)
+            .join('');
+
+        const spans = element.querySelectorAll('span');
+
+        function animate(timestamp) {
+            spans.forEach((span, index) => {
+                const hue = (timestamp * speed * 50 + index * frequency * 50) % 360;
+                span.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    // Initialize the effect (make sure your title has `id="rainbow-title"`)
+    applyRainbowWave('rainbow-title', {
+        speed: 0.004,
+        frequency: 0.25
+    });
 });
