@@ -72,7 +72,6 @@ body.menu-open .nav-toggle-btn .close-text {
     display: inline;
 }
 
-/* Theme Switcher */
 .switch {
     position: fixed;
     right: 3rem;
@@ -129,7 +128,6 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-/* Main Hero Content */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -179,7 +177,6 @@ input:checked + .slider:before {
     opacity: 0.6;
 }
 
-/* Fullscreen Navigation Overlay */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -288,7 +285,6 @@ input:checked + .slider:before {
     object-fit: cover;
 }
 
-/* Responsive Styles */
 @media (max-width: 900px) {
     .nav-container {
         grid-template-columns: 1fr;
@@ -303,3 +299,6 @@ input:checked + .slider:before {
         padding: 1.5rem 1.5rem;
     }
 }
+
+
+/* CONTACT PAGE STYLES */
