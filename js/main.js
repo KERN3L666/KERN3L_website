@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
-        
-        if (currentTheme === 'dark') {
+        if (currentTheme === 'dark' && toggleSwitch) {
             toggleSwitch.checked = true;
         }
     }
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSwitch.addEventListener('change', switchTheme, false);
     }
 
-    // 2. GSAP Navigation Menu
     const toggleBtn = document.getElementById("nav-toggle");
     const overlay = document.getElementById("nav-overlay");
     const navItems = document.querySelectorAll(".nav-item");
@@ -79,14 +77,60 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Lenis Smooth Scroll
-    if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis();
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
+    if (typeof Lenis !== 'undefined' && typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        // Scroll Showcase ScrollTrigger Reveal Effect
+        const cards = document.querySelectorAll(".work-card");
+        cards.forEach((card) => {
+            const img = card.querySelector(".card-image-wrapper");
+            const info = card.querySelector(".card-info");
+
+            gsap.fromTo(card, 
+                { opacity: 0, y: 80 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            if (img) {
+                gsap.fromTo(img.querySelector("img"), 
+                    { yPercent: -8 },
+                    {
+                        yPercent: 8,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    }
+                );
+            }
+        });
     }
 
     // 4. Rainbow Wave Title Effect Integration
@@ -100,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const saturation = options.saturation || 100;
         const lightness = options.lightness || 50;
 
-        // Split text into individual character spans
         element.innerHTML = text
             .split('')
             .map(char => `<span>${char === ' ' ? '&nbsp;' : char}</span>`)
@@ -120,9 +163,44 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(animate);
     }
 
-    // Initialize the effect (make sure your title has `id="rainbow-title"`)
     applyRainbowWave('rainbow-title', {
         speed: 0.004,
         frequency: 0.25
     });
 });
+
+        const journalItems = document.querySelectorAll(".journal-item");
+        journalItems.forEach((item) => {
+            gsap.fromTo(item, 
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.9,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        const studioSections = document.querySelectorAll(".studio-grid, .studio-stats, .capability-card");
+        studioSections.forEach((section) => {
+            gsap.fromTo(section, 
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.9,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });

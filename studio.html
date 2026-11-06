@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIMATO.EXE - studio</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="brand-logo">HIMATO.EXE</a>
+        <button id="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="menu-text">Menu</span>
+            <span class="close-text">Close</span>
+        </button>
+    </header>
+
+    <div class="switch">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+
+    <main class="studio-content">
+        <div class="studio-header">
+            <p class="subtitle">Geneva Studio</p>
+            <h1 class="main-title" id="rainbow-title">About Studio</h1>
+            <p class="welcome-message">We craft high-performance web architecture, immersive motion design, and digital identities for early-stage teams.</p>
+        </div>
+
+        <section class="studio-section">
+            <div class="studio-grid">
+                <div class="studio-text-block">
+                    <span class="studio-tag">Philosophy</span>
+                    <h2>Design driven by code and kinetic motion.</h2>
+                    <p>We believe that static web design is a thing of the past. By merging high-end aesthetics with physics-based smooth scrolling, custom WebGL/GSAP animations, and strict modular styling, we build digital environments that leave lasting impressions.</p>
+                </div>
+                <div class="studio-image-box">
+                    <img src="https://cdn.21st.dev/assets/mirror/ba/baa678cbac1a29e773743a10ff421b226cf0e9b5d786ebf34415063d6dabc02b.jpg" alt="Studio Workspace">
+                </div>
+            </div>
+        </section>
+
+        <section class="studio-stats">
+            <div class="stat-item">
+                <h3>30+</h3>
+                <p>Digital Products Shipped</p>
+            </div>
+            <div class="stat-item">
+                <h3>99%</h3>
+                <p>Performance & Accessibility Index</p>
+            </div>
+            <div class="stat-item">
+                <h3>4+</h3>
+                <p>Years of Frontend Craft</p>
+            </div>
+        </section>
+
+        <section class="studio-section">
+            <div class="studio-text-block center-align">
+                <span class="studio-tag">Expertise</span>
+                <h2>What We Do Best</h2>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <h4>01. Interaction Design</h4>
+                    <p>Custom cursor movements, immersive page transitions, and fluid micro-interactions.</p>
+                </div>
+                <div class="capability-card">
+                    <h4>02. Frontend Engineering</h4>
+                    <p>Clean, semantic, and highly optimized code built with HTML5, CSS architectures, and modern JavaScript frameworks.</p>
+                </div>
+                <div class="capability-card">
+                    <h4>03. Motion & Animation</h4>
+                    <p>Advanced timeline choreography using GSAP, ScrollTrigger, and Lenis smooth scrolling.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="nav-overlay" class="nav-overlay">
+        <div class="nav-container">
+            <div class="nav-info">
+                <div class="nav-agency-block">
+                    <h2>Geneva Studio</h2>
+                    <p class="nav-tagline">Brand and product design for early-stage teams.</p>
+                    <p class="nav-location">Geneva, Switzerland</p>
+                </div>
+                
+                <div class="nav-socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Discord</a>
+                </div>
+            </div>
+
+            <nav class="nav-links-wrapper">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="work.html">Work</a></li>
+                    <li class="nav-item"><a href="studio.html">Studio</a></li>
+                    <li class="nav-item"><a href="journal.html">Journal</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-images">
+                <div class="img-box">
+                    <img src="https://cdn.21st.dev/assets/mirror/ba/baa678cbac1a29e773743a10ff421b226cf0e9b5d786ebf34415063d6dabc02b.jpg" alt="Showcase 1">
+                </div>
+                <div class="img-box">
+                    <img src="https://cdn.21st.dev/assets/mirror/ef/ef696854debc5d2d40cbe03ea0c3a04e29689529cf2f4bfe90c1c5978f00579a.jpg" alt="Showcase 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.27/dist/lenis.min.js"></script> 
+    <script src="js/main.js"></script>
+
+</body>
+</html>
